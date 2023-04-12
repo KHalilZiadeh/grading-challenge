@@ -176,6 +176,25 @@ main {
     margin-bottom: 10px;
 }
 
+.mark:hover {
+    scale: 1.1;
+}
+
+.mark::before {
+    content: "";
+    width: 0;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 1;
+    -webkit-transition: width 0.5s ease-in-out;
+    -o-transition: width 0.5s ease-in-out;
+    transition: width 0.5s ease-in-out;
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+}
+
 .left {
     width: 50%;
     display: -webkit-box;
@@ -222,11 +241,29 @@ main {
     border-radius: 10px;
 }
 
+.red::before {
+    background-color: hsla(0, 100%, 67%, 0.6);
+}
+
+.red:hover::before {
+    width: 80%;
+}
+
 .yellow {
-    background-color: hsl(39, 100%, 56%, 0.1);
+    background-color: hsla(39, 100%, 56%, 0.1);
     color: var(--Orangey-yellow);
     border-radius: 10px;
 }
+
+.yellow::before {
+    background-color: hsla(39, 100%, 56%, 0.6);
+
+}
+
+.yellow:hover::before {
+    width: 92%;
+}
+
 
 .green {
     background-color: hsla(166, 100%, 37%, 0.1);
@@ -234,10 +271,27 @@ main {
     border-radius: 10px;
 }
 
+.green::before {
+    background-color: hsla(166, 100%, 37%, 0.6);
+
+}
+
+.green:hover::before {
+    width: 61%;
+}
+
 .blue {
     background-color: hsla(234, 85%, 45%, 0.1);
     color: var(--Cobalt-blue);
     border-radius: 10px;
+}
+
+.blue::before {
+    background-color: hsla(234, 85%, 45%, 0.6);
+}
+
+.blue:hover::before {
+    width: 72%;
 }
 
 button.continue {
