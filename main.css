@@ -24,6 +24,8 @@
 }
 
 body {
+    position: relative;
+    z-index: -10;
     font-family: Hanken Grotesk;
     background-color: var(--White);
     min-height: 100vh;
@@ -32,15 +34,29 @@ body {
     text-align: center;
 }
 
+main {
+    width: 600px;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
 .screen {
-    width: 635px;
+    width: 100%;
     height: 500px;
     border-radius: 25px;
     position: relative;
     background-color: var(--Pale-blue);
     -webkit-box-shadow: 0 0 25px 10px var(--Pale-blue);
     box-shadow: 0 0 25px 10px var(--Pale-blue);
-    z-index: -2;
+    z-index: 0;
 }
 
 .screen .card {
@@ -57,14 +73,16 @@ body {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    width: 325px;
+    width: 52.5%;
     height: 100%;
     border-radius: inherit;
     padding: 50px;
 }
 
 .screen .result {
-    background-color: hsla(256, 72%, 46%, 0.9);
+    background: -o-linear-gradient(var(--Light-slate-blue), var(--Light-royal-blue));
+    background: -webkit-gradient(linear, left top, left bottom, from(var(--Light-slate-blue)), to(var(--Light-royal-blue)));
+    background: linear-gradient(var(--Light-slate-blue), var(--Light-royal-blue));
     color: var(--Light-lavender);
     position: absolute;
     left: 0;
@@ -87,17 +105,15 @@ body {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background-color: var(--Violet-blue);
+    background: -o-linear-gradient(var(--Violet-blue), var(--Persian-blue));
+    background: -webkit-gradient(linear, left top, left bottom, from(var(--Violet-blue)), to(var(--Persian-blue)));
+    background: linear-gradient(var(--Violet-blue), var(--Persian-blue));
 }
 
 .screen .circule p:first-child {
     color: var(--White);
     font-size: 4rem;
     font-weight: 800;
-}
-
-.screen .result .circule p {
-    margin-top: -10px;
 }
 
 .screen .result div+p {
@@ -110,12 +126,12 @@ body {
     font-size: 0.8rem;
 }
 
-.marks {
+.card.marks {
     position: absolute;
     right: 0;
     z-index: -1;
     background-color: var(--White);
-    padding: 50px 30px;
+    padding: 50px 50px;
 }
 
 .marks h3 {
@@ -125,7 +141,7 @@ body {
     font-weight: 700;
 }
 
-.marker {
+.card .marker {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -139,6 +155,7 @@ body {
     height: 300px;
     -ms-flex-item-align: start;
     align-self: flex-start;
+    z-index: -1;
 }
 
 .marks .mark {
@@ -151,7 +168,7 @@ body {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    width: 100%;
+    width: clamp(200px, 100%, 100%);
     height: 50px;
     position: relative;
     padding: 10px;
@@ -223,7 +240,7 @@ body {
     border-radius: 10px;
 }
 
-.continue {
+button.continue {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -233,14 +250,72 @@ body {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    background-color: var(--Dark-gray-blue);
+    background: var(--Dark-gray-blue);
     color: var(--White);
     width: 100%;
-    padding: 10px;
-    border-radius: 22px;
+    height: 50px;
+    border-radius: 25px;
+    z-index: 3;
+    font-family: inherit;
+    font-weight: 700;
+    border: none;
+}
+
+.continue:hover {
+    background: -o-linear-gradient(var(--Light-slate-blue), var(--Light-royal-blue));
+    background: -webkit-gradient(linear, left top, left bottom, from(var(--Light-slate-blue)), to(var(--Light-royal-blue)));
+    background: linear-gradient(var(--Light-slate-blue), var(--Light-royal-blue));
 }
 
 footer {
     position: absolute;
     bottom: 1%;
+}
+
+@media screen and (max-width: 600px) {
+    main {
+        width: 100%;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    .screen {
+        height: 100%;
+        background-color: transparent;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+    .screen .card {
+        width: 100%;
+        padding: 30px;
+    }
+
+    .screen .result {
+        top: 0;
+        height: 42.5%;
+        border-radius: 0 0 25px 25px;
+    }
+
+    .result .circule {
+        width: 100px;
+        height: 100px;
+    }
+
+    .screen .circule p:first-child {
+        font-size: 2rem;
+    }
+
+    .screen .result div+p {
+        font-size: 1rem;
+    }
+
+    .card.marks {
+        bottom: 0;
+        height: 62.5%;
+        padding: 50px 30px;
+    }
+
 }
